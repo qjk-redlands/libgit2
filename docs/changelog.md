@@ -3,6 +3,9 @@ v0.27 + 1
 
 ### Changes or improvements
 
+* The library is now always built with cdecl calling conventions on
+  Windows; the ability to build a stdcall library has been removed.
+
 * The line-ending filtering logic - when checking out files - has been
   updated to match newer git (>= git 2.9) for proper interoperability.
 
