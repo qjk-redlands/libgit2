@@ -24,7 +24,7 @@ project "libgit2"
     prjDir .. "/src/",
     prjDir .. "/deps/http-parser/",
     prjDir .. "/deps/regex/",
-    prjDir .. "/deps/zlib/"
+    _3RDPARTY_DIR .. "/zlib",
   }
 
   if (os.is("windows")) then
@@ -52,25 +52,22 @@ project "libgit2"
   end
 
   defines {
-    {
-      "GIT_THREADS=1",
-      "GIT_SHA1_COLLISIONDETECT=1",
-      "SHA1DC_NO_STANDARD_INCLUDES=1",
-      "LIBGIT2_NO_FEATURES_H",
-      platform_defines
-    }
+    "GIT_THREADS=1",
+    "GIT_SHA1_COLLISIONDETECT=1",
+    "SHA1DC_NO_STANDARD_INCLUDES=1",
+    "LIBGIT2_NO_FEATURES_H",
+    platform_defines,
   }
 
   files {
     "deps/http-parser/*.c",
     "deps/regex/regex.c",
-    "deps/zlib/*.c",
     "src/*.c",
     "src/hash/sha1dc/*.c",
     "src/streams/*.c",
     "src/transports/*.c",
     "src/xdiff/*.c",
-    platform_files
+    platform_files,
   }
 
   -- -------------------------------------------------------------
