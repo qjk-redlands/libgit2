@@ -86,6 +86,11 @@ if (_PLATFORM_WINDOWS) then
   files {
     "src/win32/*.c",
   }
+
+  excludes {
+    -- use win32/rt_win32_thread.c to alias (rename) win32/thread.c without altering upstream source
+    "src/win32/thread.c",
+  }
 end
 
 if (_PLATFORM_WINUWP) then
