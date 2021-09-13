@@ -11,21 +11,36 @@ defines {
   "GIT_SHA1_COLLISIONDETECT=1",
   "SHA1DC_NO_STANDARD_INCLUDES=1",
   "LIBGIT2_NO_FEATURES_H",
+  "GIT_REGEX_BUILTIN",
+
+  -- The following are taken from libgit2/deps/pcre/{CMakeLists.txt, config.h.in}
+  "LINK_SIZE=2",
+  "PARENS_NEST_LIMIT=250",
+  "MATCH_LIMIT=10000000",
+  "MATCH_LIMIT_RECURSION=10000000",
+  "NEWLINE=10",
+  "NO_RECURSE=1",
+  "POSIX_MALLOC_THRESHOLD=10",
+  "BSR_ANYCRLF=1",
+  "MAX_NAME_SIZE=32",
+  "MAX_NAME_COUNT=10000",
 }
 
 includedirs {
   "include",
   "src",
   "deps/http-parser",
-  "deps/regex",
+  "deps/pcre",
   _3RDPARTY_DIR .. "/zlib",
 }
 
 files {
   "deps/http-parser/*.c",
-  "deps/regex/regex.c",
+  "deps/pcre/*.c",
   "src/*.c",
-  "src/hash/sha1dc/*.c",
+  "src/allocators/*.c",
+  "src/hash/sha1/collisiondetect.c",
+  "src/hash/sha1/sha1dc/*.c",
   "src/streams/*.c",
   "src/transports/*.c",
   "src/xdiff/*.c",
